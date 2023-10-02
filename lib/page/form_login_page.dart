@@ -21,7 +21,7 @@ class _FormLoginPageState extends State<FormLoginPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext contextA) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -39,15 +39,14 @@ class _FormLoginPageState extends State<FormLoginPage> {
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () async {
-                await SharedPref().saveToken(
-                  _nameController.text,
-                );
-
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const HomePage(),
                   ),
+                );
+                await SharedPref().saveToken(
+                  _nameController.text,
                 );
               },
               child: const Text('Save'),
